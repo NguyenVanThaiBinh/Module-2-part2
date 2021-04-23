@@ -13,6 +13,9 @@ public class Multi_Catch_Block_2 {
         catch (ArrayIndexOutOfBoundsException e) {
             System.out.println("ArrayIndexOutOfBounds Exception occurs");
         }
+//        catch (java.lang.NullPointerException e){
+//            System.out.println("AAAA");
+//        }
         // thằng này phải nằm cuối cùng, dạng như default !
         catch (Exception e) {
             System.out.println("Chỉ cần có thằng này thì nó bắt lỗi hết!");

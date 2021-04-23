@@ -14,7 +14,8 @@ public class ThrowException {
             Fraction f = new Fraction(2,0);
         }
         catch (Exception e){
-            e.printStackTrace();
+
+         e.getMessage();
         }
     }
 }
