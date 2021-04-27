@@ -1,18 +1,27 @@
 package com.BinhHu.Esercise;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import java.io.*;
 import java.util.Scanner;
 
 public class GetSumFile {
     //             C:\\Users\\USER\\Desktop\\numberSum.txt
     public static void main(String[] args) {
-        System.out.println("Input the path: ");
-        Scanner scanner = new Scanner(System.in);
-        String path = scanner.nextLine();
-        int sum = getSumOfFile(path);
-        System.out.println("Sum of file is: "+sum);
+
+        try{
+            File a = new File("binhhu123.txt");
+            FileWriter writer1 = new FileWriter(a);
+
+        }
+        catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+
+//        System.out.println("Input the path: ");
+//        Scanner scanner = new Scanner(System.in);
+//        String path = scanner.nextLine();
+//        int sum = getSumOfFile(path);
+//        System.out.println("Sum of file is: "+sum);
     }
     public  static int getSumOfFile(String path) {
         int sum = 0;
