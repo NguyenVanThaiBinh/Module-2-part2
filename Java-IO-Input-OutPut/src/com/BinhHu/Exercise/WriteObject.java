@@ -1,4 +1,4 @@
-package com.BinhHu.Esercise;
+package com.BinhHu.Exercise;
 
 import java.io.*;
 import java.util.ArrayList;
