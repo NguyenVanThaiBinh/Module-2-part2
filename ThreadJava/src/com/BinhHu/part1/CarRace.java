@@ -3,7 +3,7 @@ package com.BinhHu.part1;
 import java.util.Random;
 
 public  class CarRace {
-    public static int DISTANCE = 100;
+    public static int DISTANCE = 500;
 
     public static int STEP = 2;
     public  static  class Car implements Runnable {
@@ -42,7 +42,7 @@ public  class CarRace {
                     }
                     log += "|";
                     System.out.println("Car" + this.name + ": " + log + " " + Math.min(DISTANCE, runDistance) + "KM");
-                    Thread.sleep(1000);
+                    Thread.sleep(100);
                 } catch (InterruptedException e) {
                     System.out.println("Car" + this.name + " broken...");
                     break;
@@ -57,13 +57,16 @@ public  class CarRace {
         Car carB = new Car("B");
 
 
+
         Thread thread1 = new Thread(carA);
         Thread thread2 = new Thread(carB);
+
 
 
         System.out.println("Distance: 100KM");
         thread1.start();
         thread2.start();
+
 
     }
 }
