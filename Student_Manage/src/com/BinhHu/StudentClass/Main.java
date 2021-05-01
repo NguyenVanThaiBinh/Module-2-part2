@@ -25,7 +25,7 @@ public class Main {
                     deleteStudent();
                     break;
                 case 4:
-                    saveToTXT();
+                    saveToCSV();
                     break;
                 case 5:
                     readFromTXT();
@@ -47,7 +47,7 @@ public class Main {
         } while (choose != 8);
     }
 
-    private static void sortByGPA() {
+    private static void sortByGPA() throws IOException {
 
         Collections.sort(studentList, (o1, o2) -> {
             if (o1.getGpa() < o2.getGpa()) {
@@ -57,19 +57,22 @@ public class Main {
         });
         System.out.println("Is Sorted!");
         System.out.println("------------");
+        saveToCSV();
+
     }
 
-    private static void sortByName() {
+    private static void sortByName() throws IOException {
         Collections.sort(studentList, (o1, o2) -> {
             // co dau '-' la A-> Z
             return o1.getName().compareToIgnoreCase(o2.getName());
         });
         System.out.println("Is Sorted!");
         System.out.println("------------");
+        saveToCSV();
     }
 
 
-    private static void saveToTXT() throws IOException {
+    private static void saveToCSV() throws IOException {
         System.out.println("Start to save...");
         System.out.println("----------");
 
@@ -103,7 +106,7 @@ public class Main {
         if(check){
             System.out.println("Can't not delete!");
         }
-        saveToTXT();
+        saveToCSV();
 
     }
 
@@ -144,7 +147,7 @@ public class Main {
 //            student.input();
 //            studentList.add(student);
 //        }
-    saveToTXT();
+    saveToCSV();
     }
 
     private static void editStudent() throws IOException {
@@ -156,7 +159,7 @@ public class Main {
                 break;
             }
         }
-        saveToTXT();
+        saveToCSV();
 
     }
 
@@ -164,8 +167,8 @@ public class Main {
         System.out.println("1.Add student.");
         System.out.println("2.Edit student.");
         System.out.println("3.Delete student.");
-//        System.out.println("4.Save to student.txt");
-        System.out.println("5.Read from student.txt");
+//        System.out.println("4.Save to student.csv");
+        System.out.println("5.Read from student.csv");
         System.out.println("6.Sort by GPA");
         System.out.println("7.Sort by Name");
         System.out.println("8.Exit.");

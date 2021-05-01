@@ -5,6 +5,8 @@ package com.HashMap_Student.presentation;
 import java.io.*;
 import java.util.*;
 
+import static com.HashMap_Student.dal.StudentDB.readFromTXT;
+import static com.HashMap_Student.dal.StudentDB.saveToCSV;
 import static com.HashMap_Student.service.StudentService.*;
 
 public class MainStudent {
@@ -38,15 +40,21 @@ public class MainStudent {
                         System.out.println(e.getMessage());
                     }
                     break;
-                case 6:
+                case 8:
                     System.out.println("Exit.");
+                    break;
+                case 7:
+                    sortByName();
+                    break;
+                case 6:
+                    sortByGPA();
                     break;
                 default:
                     System.out.println("Wrong Input!");
                     break;
             }
 
-        } while (choose != 6);
+        } while (choose != 8);
     }
 }
 
