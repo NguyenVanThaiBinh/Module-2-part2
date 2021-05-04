@@ -5,6 +5,8 @@ import com.StudentPoint.service.StudentService;
 
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StudentPointMain  {
     public  static void main(String[] args) {
@@ -14,10 +16,21 @@ public class StudentPointMain  {
         } catch (IOException e) {
             System.err.println("Student Manager File is Empty!");
         }
+        String choose1;
         int choose;
         do {
             showMenu();
-            choose = new Scanner(System.in).nextInt();
+            String regex = "^[0-9]{1}";
+            choose1 = new Scanner(System.in).nextLine();
+            Pattern pattern = Pattern.compile(regex);
+            Matcher matcher = pattern.matcher(choose1);
+            while(!matcher.find()){
+                System.out.println("Please input again!");
+                choose1 = new Scanner(System.in).nextLine();
+                matcher = pattern.matcher(choose1);
+            }
+              choose=Integer.parseInt(choose1);
+
             switch (choose) {
                 case 1:
                     try {

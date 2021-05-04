@@ -36,6 +36,7 @@ public class StudentObject {
     }
     @Override
     public String toString() {
+
         return "StudentObject{" +
                 "id= " + id +
                 " , name= " + name +
@@ -45,6 +46,15 @@ public class StudentObject {
                 " , point3= " + point3 +
                 " , avengerPoint= " + avengerPoint +
                 '}';
+    }
+    public void makeTheBoard(){
+        System.out.format("|%-3s |", id);
+        System.out.format("%-15s |", name);
+        System.out.format("%-10s |", point1_1);
+        System.out.format("%-10s |", point1_2);
+        System.out.format("%-10s |", point2);
+        System.out.format("%-10s |", point3);
+        System.out.format("%-10s\n", avengerPoint);
     }
 
     public String toCSVFormat() {

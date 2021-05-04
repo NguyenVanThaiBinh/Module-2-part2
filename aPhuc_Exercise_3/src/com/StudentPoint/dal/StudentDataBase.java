@@ -71,8 +71,15 @@ public class StudentDataBase {
 
             }
         }
+        System.out.format("|%-3s |", "ID");
+        System.out.format("%-15s |", "Tên");
+        System.out.format("%-10s |", "Điểm hs1-1");
+        System.out.format("%-10s |", "Điểm hs1-2");
+        System.out.format("%-10s |", "Điểm hs2");
+        System.out.format("%-10s |", "Điểm hs3");
+        System.out.format("%-10s \n ", "Điểm TB");
         for (StudentObject student:printStudentList) {
-            System.out.println(student.toString());
+            student.makeTheBoard();
         }
 
         bufferedReader.close();
