@@ -1,6 +1,8 @@
 package com.StudentPoint.model;
 
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StudentObject {
     static int count = 0;
@@ -68,6 +70,16 @@ public class StudentObject {
 
         System.out.println("Input name: ");
         name = sc1.nextLine();
+        String regex = "^[a-zA-Z]*+\\s+[a-zA-Z]*$|^[a-zA-Z]*$";
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(name);
+        while(!matcher.find()){
+
+            System.out.println("Please input right format for Name !");
+            name= sc2.nextLine();
+            matcher = pattern.matcher(name);
+        }
+
 
 
         //check point

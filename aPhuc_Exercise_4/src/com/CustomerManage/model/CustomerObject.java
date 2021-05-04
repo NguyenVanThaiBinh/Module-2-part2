@@ -1,6 +1,8 @@
 package com.CustomerManage.model;
 
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class CustomerObject {
     Scanner sc = new Scanner(System.in);
@@ -96,21 +98,45 @@ public class CustomerObject {
         this.name = sc.nextLine();
         System.out.println("Nhập dia chi:");
         this.address = sc1.nextLine();
+
+
+        String regexEmail ="^\\w[a-z0-9]*@[a-z0-9]*.[a-z0-9]*$";
+//        ^\w+ start by  one character
+//        [a-z0-9]*  number or character, free length
+//        \w     sum with character
+//        mail.com$  the last must be 'mail.com$'
+        Scanner sc = new Scanner(System.in);
         System.out.println("Nhap email:");
         this.email = sc2.nextLine();
-        Scanner sc1 = new Scanner(System.in);
+        Pattern pattern = Pattern.compile(regexEmail);
+        Matcher matcher = pattern.matcher(this.email);
 
-        do {
-            System.out.println("Nhap sdt khach hang:");
-            while (!sc3.hasNextInt()) {
-                System.out.println("Please input Telephone again: ");
-                sc3.next();
-            }
-            this.telephone = sc3.nextInt();
-        } while (this.telephone  <   100000000 || this.telephone > 999999999);
-        // <   100 000 000   || < 999 999 999
-        //   0 914 249 819
-        //   0 329 853 571
+        while(!matcher.find()){
+
+            System.out.println("Please input right format for email!");
+            this.email= sc.nextLine();
+            matcher = pattern.matcher(this.email);
+        }
+
+
+        Scanner sc1;
+        sc1 = new Scanner(System.in);
+        String regex = "^0+[1-9]\\d{8}$";
+        System.out.println("Nhap sdt khach hang:");
+
+        String telephone = sc1.nextLine();
+        Pattern pattern1 = Pattern.compile(regex);
+        Matcher matcher1 = pattern1.matcher(telephone);
+
+        while (!matcher1.find()) {
+
+            System.out.println("Lam on nhap cho dung!");
+            telephone = sc1.nextLine();
+            matcher1 = pattern1.matcher(telephone);
+        }
+        this.telephone = Integer.parseInt(telephone);
+
+
         System.out.println("Nhap gioi tinh");
         this.gender = sc.nextLine();
     }

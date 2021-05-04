@@ -5,6 +5,8 @@ import com.CustomerManage.model.CustomerObject;
 
 import java.io.IOException;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import static com.CustomerManage.dal.CustomerDataBase.customerLinkedList;
 
@@ -44,7 +46,7 @@ public class CustomerService {
     }
 
     public void searchCustomer() {
-        if(customerLinkedList.size()==0){
+        if (customerLinkedList.size() == 0) {
             System.err.println("Customer Manager File is Empty!");
             return;
         }
@@ -70,7 +72,7 @@ public class CustomerService {
     }
 
     public void increaseCustomerBought() throws IOException {
-        if(customerLinkedList.size()==0){
+        if (customerLinkedList.size() == 0) {
             System.err.println("Customer Manager File is Empty!");
             return;
         }
@@ -99,7 +101,7 @@ public class CustomerService {
     }
 
     public void sortCustomerByCountToBuy() throws IOException {
-        if(customerLinkedList.size()==0){
+        if (customerLinkedList.size() == 0) {
             System.err.println("Customer Manager File is Empty!");
             return;
         }
@@ -118,7 +120,7 @@ public class CustomerService {
     }
 
     public void editCustomer() throws IOException {
-        if(customerLinkedList.size()==0){
+        if (customerLinkedList.size() == 0) {
             System.err.println("Customer Manager File is Empty!");
             return;
         }
@@ -142,7 +144,7 @@ public class CustomerService {
     }
 
     public void deleteCustomer() throws IOException {
-        if(customerLinkedList.size()==0){
+        if (customerLinkedList.size() == 0) {
             System.err.println("Customer Manager File is Empty!");
             return;
         }
@@ -166,17 +168,22 @@ public class CustomerService {
     }
 
     private int getTelephone() {
+
         Scanner sc1 = new Scanner(System.in);
-        int telephone;
-        do {
-            System.out.println("Nhap sdt khach hang:");
-            while (!sc1.hasNextInt()) {
-                System.out.println("Please input Telephone again: ");
-                sc1.next();
-            }
-            telephone = sc1.nextInt();
-        } while (telephone < 100000000 || telephone > 999999999);
-        return telephone;
+        String regex = "^0+[1-9]\\d{8}$";
+        System.out.println("Nhap sdt khach hang:");
+
+        String telephone = sc1.nextLine();
+        Pattern pattern = Pattern.compile(regex);
+        Matcher matcher = pattern.matcher(telephone);
+
+        while (!matcher.find()) {
+
+            System.out.println("Please input right format for telephone!");
+            telephone = sc1.nextLine();
+            matcher = pattern.matcher(telephone);
+        }
+        return Integer.parseInt(telephone);
     }
 }
 
